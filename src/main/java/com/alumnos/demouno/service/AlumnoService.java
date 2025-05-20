@@ -19,4 +19,21 @@ public class AlumnoService {
     public List<Alumnos> findall(){
         return alumnoRepository.findAll();
     }
+
+    //
+    public Alumnos findById(Integer id){
+        return alumnoRepository.findById(id).orElse(null);
+    };
+
+    public void  deleteAlumnos(Integer id){
+        alumnoRepository.deleteById(id);
+    }
+
+    public Alumnos findByCorreo(String correo){
+        return alumnoRepository.findByCorreo(correo);
+    }
+
+    public List<Alumnos> findByNombre(String nombre){
+        return alumnoRepository.findByNombre(nombre);
+    }
 }

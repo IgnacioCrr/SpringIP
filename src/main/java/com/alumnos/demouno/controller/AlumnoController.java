@@ -37,7 +37,7 @@ public class AlumnoController {
         return ResponseEntity.status(200).body(alumno);
     }
 
-    @DeleteMapping("api/v1/alumno/{id}")
+    @DeleteMapping("api/v1/alumnos/{id}")
     public ResponseEntity<?> deleteAlumno(@PathVariable Integer id){
         Alumnos alumno = alumnoService.findById(id);
         if (null == alumno) {
@@ -60,5 +60,11 @@ public class AlumnoController {
         List<Alumnos> alumno = alumnoService.findByNombre(nombre);
         return ResponseEntity.status(200).body(alumno);
     }
+
+    @PostMapping("api/v1/alumnos")
+    public ResponseEntity<?> guardarAlumno(@RequestBody Alumnos alumno){
+        Alumnos alumnoGuardado = alumnoService.save(alumno);
+        return ResponseEntity.status(201).body(alumnoGuardado);
+    };
 
 }
